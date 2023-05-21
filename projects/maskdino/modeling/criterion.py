@@ -425,18 +425,18 @@ class SetCriterion(nn.Module):
 
         return losses
 
-    def __repr__(self):
-        head = "Criterion " + self.__class__.__name__
-        body = [
-            "matcher: {}".format(self.matcher.__repr__(_repr_indent=8)),
-            "losses: {}".format(self.losses),
-            "weight_dict: {}".format(self.weight_dict),
-            "num_classes: {}".format(self.num_classes),
-            "eos_coef: {}".format(self.eos_coef),
-            "num_points: {}".format(self.num_points),
-            "oversample_ratio: {}".format(self.oversample_ratio),
-            "importance_sample_ratio: {}".format(self.importance_sample_ratio),
-        ]
-        _repr_indent = 4
-        lines = [head] + [" " * _repr_indent + line for line in body]
-        return "\n".join(lines)
+    # def __repr__(self):
+    #     head = "Criterion " + self.__class__.__name__
+    #     body = [
+    #         "matcher: {}".format(self.matcher.__repr__(_repr_indent=8)),
+    #         "losses: {}".format(self.losses),
+    #         "weight_dict: {}".format(self.weight_dict),
+    #         "num_classes: {}".format(self.num_classes),
+    #         "eos_coef: {}".format(self.eos_coef),
+    #         "num_points: {}".format(self.num_points),
+    #         "oversample_ratio: {}".format(self.oversample_ratio),
+    #         "importance_sample_ratio: {}".format(self.importance_sample_ratio),
+    #     ]
+    #     _repr_indent = 4
+    #     lines = [head] + [" " * _repr_indent + line for line in body]
+    #     return "\n".join(lines)
