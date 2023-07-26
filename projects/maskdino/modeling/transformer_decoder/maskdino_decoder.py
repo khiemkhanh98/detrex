@@ -166,6 +166,8 @@ class MaskDINODecoder(nn.Module):
 
             if max(known_num)>0:
                 scalar=scalar//(int(max(known_num)))
+                # if scalar == 0:
+                #     scalar = 1 
             else:
                 scalar=0
             if scalar==0:
