@@ -52,6 +52,7 @@ class TransformerDecoder(nn.Module):
             self.query_scale = MLP(d_model, d_model, d_model, 2)
         self.bbox_embed = None
         self.class_embed = None
+        self.kp_embed = None
 
         self.d_model = d_model
         self.modulate_hw_attn = modulate_hw_attn
@@ -77,7 +78,6 @@ class TransformerDecoder(nn.Module):
             assert len(dec_layer_dropout_prob) == num_layers
             for i in dec_layer_dropout_prob:
                 assert 0.0 <= i <= 1.0
-
         self._reset_parameters()
 
     def _reset_parameters(self):
@@ -216,7 +216,7 @@ class DeformableTransformerDecoderLayer(nn.Module):
         tgt = self.norm3(tgt)
         return tgt
 
-    @autocast(enabled=False)
+    @autocast(enabled=True)
     def forward(self,
                 # for tgt
                 tgt: Optional[Tensor],  # nq, bs, d_model
